@@ -1,5 +1,5 @@
 import java.util.*;
-
+String x = new String();
 public void setup() {
 	String lines[] = loadStrings("words.txt");
 	System.out.println("there are " + lines.length + " lines");
@@ -25,6 +25,16 @@ for(int i = 0; i < sWord.length(); i++) {
 public String pigLatin(String sWord) {
 //precondition: sWord is a valid String of length greater than 0
 //postcondition: returns the pig latin equivalent of sWord
+
+	/* if(sWord.substring(0) == sWord.substring(i)) {
+		return sWord + "way";
+	} */ 
+	if(sWord.substring(0).equals("a") || sWord.substring(0).equals("e") || sWord.substring(0).equals("i") || sWord.substring(0).equals("o") || sWord.substring(0).equals("u")) {
+		return sWord + "way";
+	}
+	if(sWord.substring(0,2).equals("qu")) {
+		return ((sWord.substring(2, sWord.length()-1) + "qu") + "ay");
+	}
 	if(findFirstVowel(sWord) == -1)
 	{
 		return sWord + "ay";
