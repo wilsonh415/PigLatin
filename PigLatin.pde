@@ -1,5 +1,4 @@
 import java.util.*;
-String x = new String();
 public void setup() {
 	String lines[] = loadStrings("words.txt");
 	System.out.println("there are " + lines.length + " lines");
@@ -26,27 +25,28 @@ public String pigLatin(String sWord) {
 //precondition: sWord is a valid String of length greater than 0
 //postcondition: returns the pig latin equivalent of sWord
 
-	/* if(sWord.substring(0) == sWord.substring(i)) {
-		return sWord + "way";
-	} */ 
-	if(sWord.substring(0).equals("a") || sWord.substring(0).equals("e") || sWord.substring(0).equals("i") || sWord.substring(0).equals("o") || sWord.substring(0).equals("u")) {
-		return sWord + "way";
+		if(findFirstVowel(sWord) == -1)
+	{
+		return sWord + "ay"; 
 	}
+
 	if(sWord.substring(0,2).equals("qu")) {
 		return ((sWord.substring(2, sWord.length()-1) + "qu") + "ay");
+	}
+/*f(sWord.substring(0).equals("a") || sWord.substring(0).equals("e") || sWord.substring(0).equals("i") || sWord.substring(0).equals("o") || sWord.substring(0).equals("u")) {
+		return (sWord + "way");
+	}
+	*/
+	if(findFirstVowel(sWord) == 0) {
+		return sWord + "way";
 	}
 		if(findFirstVowel(sWord) != 0) {
 		String x = new String();
 		String y = new String(sWord.substring(0, findFirstVowel(sWord)));
 		String z = new String(sWord.substring(findFirstVowel(sWord), sWord.length()));
-		x = x + y + z + "ay";
+		x = z + y + "ay";
 		return x;
-	}
-
-	if(findFirstVowel(sWord) == -1)
-	{
-		return sWord + "ay";
-	}
+	}	
 	else
 	{
 		return "ERROR!";
